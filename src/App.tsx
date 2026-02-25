@@ -38,7 +38,7 @@ function App() {
   };
 
   const openWhatsApp = () => {
-  const phone = '5599999999999'; // DDD + número (sem espaços)
+  const phone = '5581999693619'; // DDD + número (sem espaços)
   const message = 'Olá! Quero saber mais sobre a próxima turma.';
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
@@ -166,8 +166,8 @@ function App() {
             <div className="grid grid-cols-3 gap-8 mt-20 max-w-2xl mx-auto">
               {[
                 { value: '500+', label: 'Alunos Formados' },
-                { value: '15+', label: 'Turmas Realizadas' },
-                { value: '98%', label: 'Taxa de Aprovação' },
+                { value: '11+', label: 'Turmas Realizadas' },
+                { value: '100%', label: 'Taxa de Aprovação' },
               ].map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="text-2xl md:text-3xl font-black text-[#F97316]">{stat.value}</div>
@@ -194,7 +194,7 @@ function App() {
                   A MAIOR{' '}
                   <span className="text-gradient">FÁBRICA</span>
                   <br />
-                  DE BARBEIROS DO MS
+                  DE BARBEIROS DE GRAVATÁ
                 </h2>
 
                 <p className="text-gray-400 text-lg leading-relaxed mb-6">
@@ -206,7 +206,7 @@ function App() {
                 <p className="text-gray-400 leading-relaxed mb-8">
                   Com instrutores experientes e uma estrutura completa, oferecemos 
                   cursos que vão do iniciante ao avançado, garantindo que cada aluno 
-                  saia pronto para trabalhar e faturar alto.
+                  saia pronto para trabalhar.
                 </p>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -231,8 +231,7 @@ function App() {
                       <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#F97316] to-[#EF4444] flex items-center justify-center glow-orange">
                         <Scissors className="w-16 h-16 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold mb-2">FÁBRICA DE BARBEIROS</h3>
-                      <p className="text-gray-500">MS</p>
+                      <h3 className="text-2xl font-bold mb-2">FÁBRICA DE BARBEIROS MS</h3>
                     </div>
                   </div>
                 </div>
@@ -395,7 +394,7 @@ function App() {
                 },
                 {
                   name: 'Matheus Silva',
-                  text: 'A Fábrica de Barbeiros mudou minha vida. Hoje tenho minha própria barbearia e faturo mais de 10k por mês.',
+                  text: 'A Fábrica de Barbeiros mudou minha vida. Hoje tenho minha própria barbearia.',
                   course: 'Barbeiro Avançado'
                 },
                 {
@@ -468,11 +467,11 @@ function App() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-gray-500">
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-[#F97316]" />
-                  Unidade Centro e XV de novembro
+                  <a href="#">Unidade Centro e XV de novembro</a>
                 </div>
                 <div className="flex items-center gap-2">
                   <Instagram className="w-4 h-4 text-[#F97316]" />
-                  @fabricadebarbeirosms
+                  <a href="https://www.instagram.com/fabricadebarbeirosms/">@fabricadebarbeirosms</a>
                 </div>
               </div>
             </div>
