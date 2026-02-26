@@ -92,8 +92,7 @@ function App() {
         </div>
 
         {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-[#0A0A0A]/98 backdrop-blur-md border-t border-white/10 py-6 px-6">
+          <div className={`md:hidden absolute top-full left-0 right-0 mobile-menu py-6 px-6 ${mobileMenuOpen ? 'open' : ''}`}>
             <div className="flex flex-col gap-4">
               {['Início', 'Sobre', 'Cursos', 'Depoimentos'].map((item) => (
                 <button
@@ -112,7 +111,6 @@ function App() {
               </Button>
             </div>
           </div>
-        )}
       </nav>
 
       {/* Hero Section */}
