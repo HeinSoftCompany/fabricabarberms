@@ -17,6 +17,9 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+import Logo from './assets/images/logo.png';
+import VideoBarbearia from './assets/videos/barbearia.mp4';
+
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -46,72 +49,96 @@ function App() {
 };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white overflow-x-hidden">
-      {/* Navigation */}
-      <nav 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-[#0A0A0A]/95 backdrop-blur-md py-4' : 'bg-transparent py-6'
-        }`}
-      >
-        <div className="w-full px-6 lg:px-12 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#F97316] to-[#EF4444] flex items-center justify-center">
-              <Scissors className="w-5 h-5 text-white" />
-            </div>
-            <span className="font-bold text-lg tracking-tight">
-              FÁBRICA <span className="text-[#F97316]">DE</span> BARBEIROS <span className="text-[#F97316]">MS</span>
-            </span>
+  <div className="min-h-screen bg-[#0A0A0A] text-white overflow-x-hidden">
+    {/* Navigation */}
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-[#0A0A0A]/95 backdrop-blur-md py-4' : 'bg-transparent py-6'
+      }`}
+    >
+      <div className="w-full px-6 lg:px-12 flex items-center justify-between">
+        {/* LOGO + NOME */}
+        <div className="flex items-center gap-3">
+          {/* Logo */}
+          <div className="w-[56px] h-[56px] rounded-full bg-gradient-to-br from-[#F97316] to-[#EF4444] flex items-center justify-center">
+            <img
+              src={Logo}
+              alt="Fábrica de Barbeiros MS"
+              className="w-[64px] h-[64px] object-contain"
+            />
           </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
-            {['Início', 'Sobre', 'Cursos', 'Depoimentos'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
-                className="text-sm font-medium text-gray-300 hover:text-[#F97316] transition-colors"
-              >
-                {item}
-              </button>
-            ))}
-            <Button 
-              className="bg-gradient-to-r from-[#F97316] to-[#EF4444] hover:opacity-90 text-white font-semibold px-6"
-              onClick={() => scrollToSection('barber')}
-            >
-              Quero Ser Barbeiro
-            </Button>
-          </div>
+          {/* Nome no MOBILE + TABLET (até iPad mini) */}
+          <div className="flex flex-col leading-tight sm:hidden">
+    <span className="font-bold text-sm tracking-tight">
+      FÁBRICA <span className="text-[#F97316]">DE</span>
+    </span>
+    <span className="font-bold text-sm tracking-tight">
+      BARBEIROS <span className="text-[#F97316]">MS</span>
+    </span>
+  </div>
 
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-white"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Nome no DESKTOP (lg pra cima) */}
+          {/* TABLET + DESKTOP (UMA LINHA) */}
+  <span className="hidden sm:inline-block font-bold text-base md:text-lg tracking-tight">
+    FÁBRICA <span className="text-[#F97316]">DE</span> BARBEIROS{' '}
+    <span className="text-[#F97316]">MS</span>
+  </span>
         </div>
 
-        {/* Mobile Menu */}
-          <div className={`md:hidden absolute top-full left-0 right-0 mobile-menu py-6 px-6 ${mobileMenuOpen ? 'open' : ''}`}>
-            <div className="flex flex-col gap-4">
-              {['Início', 'Sobre', 'Cursos', 'Depoimentos'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className="text-left text-gray-300 hover:text-[#F97316] transition-colors py-2"
-                >
-                  {item}
-                </button>
-              ))}
-              <Button 
-                className="bg-gradient-to-r from-[#F97316] to-[#EF4444] hover:opacity-90 text-white font-semibold w-full mt-2"
-                onClick={() => scrollToSection('barber')}
-              >
-                Quero Ser Barbeiro
-              </Button>
-            </div>
-          </div>
-      </nav>
+        {/* Desktop Menu (só a partir de lg) */}
+        <div className="hidden lg:flex items-center gap-8">
+          {['Início', 'Sobre', 'Cursos', 'Depoimentos'].map((item) => (
+            <button
+              key={item}
+              onClick={() => scrollToSection(item.toLowerCase())}
+              className="text-sm font-medium text-gray-300 hover:text-[#F97316] transition-colors"
+            >
+              {item}
+            </button>
+          ))}
+          <Button
+            className="bg-gradient-to-r from-[#F97316] to-[#EF4444] hover:opacity-90 text-white font-semibold px-6"
+            onClick={() => scrollToSection('barber')}
+          >
+            Quero Ser Barbeiro
+          </Button>
+        </div>
+
+        {/* Mobile / Tablet Menu Button (até lg) */}
+        <button
+          className="lg:hidden text-white"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+
+      {/* Mobile / Tablet Menu */}
+      <div
+        className={`lg:hidden absolute top-full left-0 right-0 mobile-menu py-6 px-6 ${
+          mobileMenuOpen ? 'open' : ''
+        }`}
+      >
+        <div className="flex flex-col gap-4">
+          {['Início', 'Sobre', 'Cursos', 'Depoimentos'].map((item) => (
+            <button
+              key={item}
+              onClick={() => scrollToSection(item.toLowerCase())}
+              className="text-left text-gray-300 hover:text-[#F97316] transition-colors py-2"
+            >
+              {item}
+            </button>
+          ))}
+          <Button
+            className="bg-gradient-to-r from-[#F97316] to-[#EF4444] hover:opacity-90 text-white font-semibold w-full mt-2"
+            onClick={() => scrollToSection('barber')}
+          >
+            Quero Ser Barbeiro
+          </Button>
+        </div>
+      </div>
+    </nav>
 
       {/* Hero Section */}
       <section id="início" className="relative min-h-screen flex items-center justify-center pt-20">
@@ -179,78 +206,83 @@ function App() {
 
       {/* About Section */}
       <section id="sobre" className="py-24 relative">
-        <div className="w-full px-6 lg:px-12">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-              <div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F97316]/10 border border-[#F97316]/20 mb-6">
-                  <Award className="w-4 h-4 text-[#F97316]" />
-                  <span className="text-sm text-[#F97316] font-medium">Sobre Nós</span>
-                </div>
-                
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6">
-                  A MAIOR{' '}
-                  <span className="text-gradient">FÁBRICA</span>
-                  <br />
-                  DE BARBEIROS DE GRAVATÁ
-                </h2>
+  <div className="w-full px-6 lg:px-12">
+    <div className="max-w-6xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F97316]/10 border border-[#F97316]/20 mb-6">
+            <Award className="w-4 h-4 text-[#F97316]" />
+            <span className="text-sm text-[#F97316] font-medium">Sobre Nós</span>
+          </div>
+          
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6">
+            A MAIOR{' '}
+            <span className="text-gradient">FÁBRICA</span>
+            <br />
+            DE BARBEIROS DE GRAVATÁ
+          </h2>
 
-                <p className="text-gray-400 text-lg leading-relaxed mb-6">
-                  Nascemos com uma missão clara: transformar vidas através da barbearia. 
-                  Nosso método de ensino prático e intensivo prepara alunos para o mercado 
-                  de trabalho em tempo recorde.
-                </p>
+          <p className="text-gray-400 text-lg leading-relaxed mb-6">
+            Nascemos com uma missão clara: transformar vidas através da barbearia. 
+            Nosso método de ensino prático e intensivo prepara alunos para o mercado 
+            de trabalho em tempo recorde.
+          </p>
 
-                <p className="text-gray-400 leading-relaxed mb-8">
-                  Com instrutores experientes e uma estrutura completa, oferecemos 
-                  cursos que vão do iniciante ao avançado, garantindo que cada aluno 
-                  saia pronto para trabalhar.
-                </p>
+          <p className="text-gray-400 leading-relaxed mb-8">
+            Com instrutores experientes e uma estrutura completa, oferecemos 
+            cursos que vão do iniciante ao avançado, garantindo que cada aluno 
+            saia pronto para trabalhar.
+          </p>
 
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    'Certificado Reconhecido',
-                    'Material Incluso',
-                    'Aulas Práticas',
-                    'Suporte Pós-Curso'
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-[#F97316] flex-shrink-0" />
-                      <span className="text-sm text-gray-300">{item}</span>
-                    </div>
-                  ))}
-                </div>
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              'Certificado Reconhecido',
+              'Material Incluso',
+              'Aulas Práticas',
+              'Suporte Pós-Curso'
+            ].map((item, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-[#F97316] flex-shrink-0" />
+                <span className="text-sm text-gray-300">{item}</span>
               </div>
+            ))}
+          </div>
+        </div>
 
-              <div className="relative">
-                <div className="aspect-square rounded-2xl bg-gradient-to-br from-[#F97316]/20 to-[#EF4444]/20 p-1">
-                  <div className="w-full h-full rounded-2xl bg-[#111] flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#F97316] to-[#EF4444] flex items-center justify-center glow-orange">
-                        <Scissors className="w-16 h-16 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-bold mb-2">FÁBRICA DE BARBEIROS MS</h3>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Floating Badge */}
-                <div className="absolute -bottom-6 -left-6 bg-[#0A0A0A] border border-white/10 rounded-xl p-4 shadow-2xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-[#F97316]/20 flex items-center justify-center">
-                      <Users className="w-6 h-6 text-[#F97316]" />
-                    </div>
-                    <div>
-                      <div className="text-2xl font-black text-white">500+</div>
-                      <div className="text-xs text-gray-500">Alunos Satisfeitos</div>
-                    </div>
-                  </div>
-                </div>
+        <div className="relative">
+          <div className="aspect-square rounded-2xl bg-gradient-to-br from-[#F97316]/20 to-[#EF4444]/20 p-1">
+            <div className="w-full h-full rounded-2xl overflow-hidden bg-[#111]">
+              <video
+                className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src={VideoBarbearia} type="video/mp4" />
+                Seu navegador não suporta vídeo HTML5.
+              </video>
+            </div>
+          </div>
+          
+          {/* Floating Badge */}
+          <div className="absolute -bottom-6 -left-6 bg-[#0A0A0A] border border-white/10 rounded-xl p-4 shadow-2xl">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-[#F97316]/20 flex items-center justify-center">
+                <Users className="w-6 h-6 text-[#F97316]" />
+              </div>
+              <div>
+                <div className="text-2xl font-black text-white">500+</div>
+                <div className="text-xs text-gray-500">Alunos Satisfeitos</div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Courses Section */}
       <section id="cursos" className="py-24 relative">
